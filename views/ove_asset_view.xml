@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="ove_asset_parent_tree_view" model="ir.ui.view">
+    <field name="name">Asset Category</field>
+    <field name="model">ove.asset.category</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="parent_id"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="ove_asset_parent_form_view" model="ir.ui.view">
+    <field name="name">Asset Category Form View</field>
+    <field name="model">ove.asset.category</field>
+    <field name="arch" type="xml">
+      <form>
+        <group>
+          <field name="name"/>
+          <field name="parent_id"/>
+        </group>
+      </form>
+    </field>
+  </record>
+
+  <record id="ove_asset_category_search_view" model="ir.ui.view">
+    <field name="name">ove.asset.category.search.view</field>
+    <field name="model">ove.asset.category</field>
+    <field name="arch" type="xml">
+      <search>
+        <field name="name"/>
+      </search>
+    </field>
+  </record>
+
+  <record id="ove_asset_line_tree_view" model="ir.ui.view">
+    <field name="name">Assets - Tree View </field>
+    <field name="model">ove.asset</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="parent_id"/>
+        <field name="asset_value"/>
+            <field name="date_purchased"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="ove_asset_line_form_view" model="ir.ui.view">
+    <field name="name">Assets - Form View </field>
+    <field name="model">ove.asset</field>
+    <field name="arch" type="xml">
+      <form>
+       <sheet>
+        <group>
+          <group>
+            <field name="name"/>
+            <field name="description"/>
+            <field name="serial_number"/>
+            <field name="part_number"/>
+            <field name="parent_id"/>
+          </group>
+          <group>
+            <field name="asset_value"/>
+            <field name="date_purchased"/>
+            <field name="asset_writeoff_date"/>
+            <field name="asset_state"/>
+          </group>
+        </group>
+       </sheet>
+       <div class="oe_chatter">
+        <field name="message_follower_ids" widget="mail_followers"/>
+        <field name="message_ids" widget="mail_thread"/>
+       </div>
+      </form>
+    </field>
+  </record>
+
+  <record id="ove_asset_line_search_view" model="ir.ui.view">
+    <field name="name">ove.asset.line.search.view</field>
+    <field name="model">ove.asset</field>
+    <field name="arch" type="xml">
+      <search>
+        <field name="name"/>
+      </search>
+    </field>
+  </record>
+
+  <record id="tree_employee_asset_view" model="ir.ui.view">
+    <field name="name">Employee Asset Tree View</field>
+    <field name="model">ove.employee.asset</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name"/>
+        <field name="employee_id"/>
+        <field name="total_assets" sum="Total Value"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="ove_employee_asset_form_view" model="ir.ui.view">
+    <field name="name">Employee Asset Form</field>
+    <field name="model">ove.employee.asset</field>
+    <field name="arch" type="xml">
+      <form>
+       <sheet>
+        <group>
+          <group name="main" string="Employee">
+            <label for="name"/>
+              <div><field name="name"/></div>
+              <field name="employee_id"/>
+          </group>
+          <group>
+            <field name="total_assets"/>
+          </group>
+        </group>
+        <notebook>
+          <page string="Asset Lines">
+            <field name="asset_line">
+              <tree editable="bottom">
+                <field name="asset_id"/>
+                <field name="date_assigned"/>
+                <field name="date_returned"/>
+                <field name="asset_value"/>
+              </tree>
+            </field>
+          </page>
+        </notebook>
+       </sheet>
+       <div class="oe_chatter">
+        <field name="message_follower_ids" widget="mail_followers"/>
+        <field name="message_ids" widget="mail_thread"/>
+       </div>
+      </form>
+    </field>
+  </record>
+
+  <record id="ove_asset_search_view" model="ir.ui.view">
+    <field name="name">ove.asset.search.view</field>
+    <field name="model">ove.employee.asset</field>
+    <field name="arch" type="xml">
+      <search>
+        <field name="employee_id"/>
+      </search>
+    </field>
+  </record>
+
+  <record id="ove_actions_asset_view" model="ir.actions.act_window">
+    <field name="name">Actions for Employee Asset</field>
+    <field name="res_model">ove.asset</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <record id="actions_ove_asset_category_view" model="ir.actions.act_window">
+    <field name="name">Asset Category View</field>
+    <field name="res_model">ove.asset.category</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <record id="actions_ove_employee_asset_view" model="ir.actions.act_window">
+    <field name="name">Assets Menu</field>
+    <field name="res_model">ove.employee.asset</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+
+  <menuitem id="menu_employee_asset" name="Organisational Assets for Employees" sequence="30"/>
+
+  <menuitem id="menu_ove_employee_asset_view" action="actions_ove_employee_asset_view"
+  sequence="2" name="Asset for Employees"  parent="menu_employee_asset"/>
+
+  <menuitem id="menu_group_asset" name="Configuration" parent="menu_employee_asset" sequence="5"/>
+
+  <menuitem id="menuitem_ove_asset_category" name="Asset Category" action="actions_ove_asset_category_view" sequence="2"
+  parent="menu_group_asset"/>
+
+  <menuitem id="menuitem_ove_asset" name="Assets" action="ove_actions_asset_view" sequence="5"
+  parent="menu_group_asset"/>
+
+</odoo>
+

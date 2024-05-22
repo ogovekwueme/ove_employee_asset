@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+acl_ove_asset_employee,Employee Asset,model_ove_asset,group_asset_employee,1,1,1,0
+acl_ove_asset_manager,Asset Manager,model_ove_asset,group_asset_manager,1,1,1,1
+ove_asset_employee,Organisational Asset for Employees,model_ove_employee_asset,group_asset_employee,1,1,1,0
+ove_asset_manager,Organisational Asset for Managers,model_ove_employee_asset,group_asset_manager,1,1,1,1
+ove_asset_category_employee,Organisational Asset for Employees,model_ove_asset_category,group_asset_employee,1,1,1,0
+ove_asset_category_manager,Organisational Asset for Managers,model_ove_asset_category,group_asset_manager,1,1,1,1
+ove_asset_line_employee,Organisational Asset for Employees,model_ove_employee_asset_line,group_asset_employee,1,1,1,0
+ove_asset_line_manager,Organisational Asset for Managers,model_ove_employee_asset_line,group_asset_manager,1,1,1,1
