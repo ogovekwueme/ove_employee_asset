@@ -8,10 +8,5 @@
     <record id="group_asset_manager" model="res.groups">
       <field name="name">Organisational Asset - Manager</field>
     </record>
-<!--    <record id="record_rule_assigned_by_manager" model="ir.rule">
-      <field name="name">User Assigned By Manager Rule</field>
-      <field name="model_id" ref="model_ove_employee_asset"/>
-      <field name="domain_force">[('employee_id.user_id','=',user.id)]</field>
-    </record>-->
   </data>
 </odoo>
