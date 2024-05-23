@@ -106,14 +106,14 @@
       <form>
        <sheet>
         <group>
-          <group name="main" string="Employee">
-            <label for="name"/>
+          <label for="name"/>
               <div><field name="name"/></div>
+        </group>
+        <group>
               <field name="employee_id"/>
-          </group>
-          <group>
+        </group>
+        <group>
             <field name="total_assets"/>
-          </group>
         </group>
         <notebook>
           <page string="Asset Lines">
